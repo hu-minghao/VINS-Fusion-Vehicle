@@ -1,0 +1,4 @@
+<launch>
+<node pkg="loop_fusion" type="loop_fusion_node" name="loop_fusion" args="/home/nvidia/SLAM_CODE/VINS/src/VINS-Fusion-RGBD/config/realsense/realsense_depth_imu_config_d435i_location.yaml" output="screen"/>
+<node pkg="tf" type="static_transform_publisher" name="vins_move_tf_4" args="0 0 0 0 0 0 world map 20" />
+</launch>

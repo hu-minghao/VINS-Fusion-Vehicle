@@ -1,0 +1,13 @@
+<launch>
+<!--node pkg="vins" type="vins_node" name="vins_estimator" args="/home/nvidia/SLAM_CODE/VINS/src/VINS-Fusion-RGBD/config/realsense/realsense_depth_imu_config_d435i.yaml" output="screen"/-->
+<node pkg="loop_fusion" type="loop_fusion_node" name="loop_fusion" args="/home/nvidia/SLAM_CODE/VINS/src/VINS-Fusion-RGBD/config/realsense/realsense_depth_imu_config_d435i.yaml" output="screen"/>
+<!--node pkg="loop_fusion" type="loop_fusion_node" name="loop_fusion" args="/home/amr1/VINS_RGBD/catkin_vinsfusion_rgbd/src/VINS-Fusion-RGBD/config/realsense/realsense_depth_imu_config_d435i.yaml" output="screen"-->
+<!--remap from="/vins_estimator/odometry" to="/odom_wheel/odom" /-->
+<!--remap from="/vins_estimator/keyframe_pose" to="/odom_wheel/odom" /-->
+<!--/node-->
+<!--node pkg="tf" type="static_transform_publisher" name="vins_move_tf_1" args="0 0 0 0 0 0 camera base_link 40" /-->
+<!--node pkg="tf" type="static_transform_publisher" name="vins_move_tf_2" args="0 0 0 0 0 0 world odom_wheel/odom 20" /-->
+<!--node pkg="tf" type="static_transform_publisher" name="vins_move_tf_3" args="0 0 0 0 0 0 world odom 20" /-->
+<node pkg="tf" type="static_transform_publisher" name="vins_move_tf_4" args="0 0 0 0 0 0 world map 20" />
+<!--include file="/home/amr1/VINS_RGBD/catkin_vinsfusion_rgbd/src/VINS-Fusion-RGBD/vins_estimator/launch/vins_rviz.launch" /-->
+</launch>
